@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Images!</title>
+
+    <style>
+
+      img {
+          height: 25%;
+          width: 25%;
+          margin: 2vw;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="content"></div>
+    <div id="images"></div>
+
+    <script language="javascript">
+        let songs = [
+            {
+                title: "Getting Away with It (All Messed Up)",
+                artist: "James",
+                album: "Pleased to Meet You",
+                year: 2001,
+                art: "https://upload.wikimedia.org/wikipedia/en/2/2a/JamesPleasedToMeetYou.jpg"
+            },
+            {
+                title: "Renaissance Affair",
+                artist: "Hooverphonic",
+                album: "Blue Wonder Power Milk",
+                year: 1998,
+                art: "https://upload.wikimedia.org/wikipedia/en/1/17/Hooverphonic-Blue_Wonder_Power_Milk.jpg"
+            },
+            {
+                title: "White Nights",
+                artist: "Oh Land",
+                album: "Oh Land",
+                year: 2011,
+                art: "https://upload.wikimedia.org/wikipedia/en/6/68/Oh_Land_%28album%29.png"
+            }
+        ]
+        for(let i = 0; i < songs.length; i++) {
+            var img = document.createElement('img');
+            img.setAttribute('src', songs[i].art);
+            img.setAttribute('id', 'image')
+            document.getElementById("images").appendChild(img);
+
+            img.addEventListener("click", bindClick(i));
+        }
+
+        function bindClick(i) {
+            return function() {
+                console.log("you clicked region number " + i);
+                var newDiv = document.createElement("div");
+
+                var newContent = document.createTextNode(
+                    'Title: ' + songs[i].title +
+                    '\t || \t Artist: ' + songs[i].artist +
+                    '\t || \t Album: ' + songs[i].album +
+                    '\t || \t Year: ' + songs[i].year
+                )
+
+                newDiv.appendChild(newContent);
+                document.getElementById("content").appendChild(newDiv)
+            }
+        }
+
+
+
+    </script>
+  </body>
+</html>
